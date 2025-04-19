@@ -1,0 +1,20 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "FCS Forex History",
+  "name_for_model": "fcs_forex_history",
+  "description_for_human": "ดึงข้อมูลแท่งเทียน Forex/XAUUSD จาก FCSAPI",
+  "description_for_model": "Plugin to fetch historical forex candlestick data from fcsapi.com",
+  "auth": {
+    "type": "api_key",
+    "in": "query",
+    "name": "access_key"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://<your-github-username>.github.io/<your-repo>/openapi.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://<your-github-username>.github.io/<your-repo>/logo.png",
+  "contact_email": "you@your-domain.com",
+  "legal_info_url": "https://your-domain.com/legal"
+}
