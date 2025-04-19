@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FCSAPI Forex History",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api-v3/forex/history": {
+      "get": {
+        "summary": "Get historical candlestick data",
+        "description": "ดึงข้อมูลแท่งเทียนของ symbol ตาม period, limit จาก FCSAPI",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "symbol",
+            "schema": { "type": "string" },
+            "required": true,
+            "description": "รูปแบบ XAU/USD, EUR/USD ฯลฯ"
+          },
+          {
+            "in": "query",
+            "name": "period",
+            "schema": { "type": "string" },
+            "required": true,
+            "description": "อินเตอร์วอล เช่น 1h, 4h, 1d"
+          },
+          {
+            "in": "query",
+            "name": "level",
+            "schema": { "type": "integer" },
+            "required": false,
+            "description": "ระดับรายละเอียด (1 = แท่งเดียว)"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": { "type": "integer" },
+            "required": false,
+            "description": "จำนวนแท่งที่ต้องการ (max 300)"
+          },
+          {
+            "in": "query",
+            "name": "access_key",
+            "schema": {
+              "type": "string",
+              "default": "JEfirOifHMtwrUnS5yKuHc7Q"
+            },
+            "required": true,
+            "description": "API Key ของคุณ (ฝังไว้เพื่อทดสอบ)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "รายการแท่งเทียน",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "boolean" },
+                    "status_code": { "type": "integer" },
+                    "history": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "time":   { "type": "string" },
+                          "open":   { "type": "string" },
+                          "high":   { "type": "string" },
+                          "low":    { "type": "string" },
+                          "close":  { "type": "string" },
+                          "volume": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
